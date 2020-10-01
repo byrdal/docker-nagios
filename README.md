@@ -1,0 +1,39 @@
+# Nagios in docker
+
+Nagios running in docker
+
+- Nagios Core 4.4.6
+- Nagios Plugins 2.3.3
+- Nagiosgraph 1.5.2
+- Check Mysql Health 2.2.2
+
+## Running the image
+
+```
+docker run --name nagios -p 80:80 byrdal/nagios:latest
+```
+
+Or use docker-compose
+
+```
+docker-compose up -d
+```
+
+Access the web interface at http://localhost:80
+
+## Credentials
+
+Set basic auth credentials for the web interface as environment variables `NAGIOS_USER` & `NAGIOS_PASS`, default
+credentials are `nagiosadmin` / `nagiosadmin`
+
+## Configuration
+
+Nagios configuration lives in `/usr/local/nagios/etc` and objects are in `/usr/local/nagios/etc/objects`.
+The image comes with sample configuration, to customize the configuration volume mount your own configuration. 
+
+## Environment variables
+
+- `NAGIOS_BASIC_AUTH` Enable or disable nagios web basic auth (default: enabled)
+- `NAGIOS_USER` Username for nagios web basic auth (default: nagiosadmin)
+- `NAGIOS_PASS` Password for nagios web basic auth (default: nagiosadmin)
+- `NAGIOS_TIMEZONE` Timezone for web (default: UTC)  

@@ -1,0 +1,7 @@
+version: "3.7"
+
+services:
+  nagios:
+    image: byrdal/nagios:latest
+    ports:
+      - 80:80
