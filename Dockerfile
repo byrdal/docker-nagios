@@ -7,7 +7,7 @@ ENV CHECK_MYSQL_HEALTH_VERSION=2.2.2
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt update && \
-    apt install -y build-essential curl wget unzip iputils-ping apache2-utils libcgi-pm-perl librrds-perl libgd-gd2-perl libnagios-object-perl libdbi-perl libdbd-mysql-perl libssl-dev mailutils nginx fcgiwrap php-fpm openssh-client && \
+    apt install -y build-essential curl wget unzip iputils-ping apache2-utils libcgi-pm-perl librrds-perl libgd-gd2-perl libnagios-object-perl libdbi-perl libdbd-mysql-perl libssl-dev mailutils nginx fcgiwrap php-fpm openssh-client jq && \
 # Install Nagios Core
     adduser --system --group --force-badname nagios && \
     usermod -a -G nagios www-data && \
