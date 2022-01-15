@@ -1,0 +1,29 @@
+---
+name: build
+
+on:
+  push:
+    tags: ['**']
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Docker login
+        env:
+          DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USER }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        run: docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD
+
+      - name: Build image
+        run: docker build -t byrdal/nagios:latest .
+
+      - name: Push image
+        run: |
+          env | grep GITHUB_REF
+          docker tag byrdal/nagios:latest byrdal/nagios:$GITHUB_REF_NAME
+          docker push byrdal/nagios:latest
+          docker push byrdal/nagios:$GITHUB_REF_NAME
