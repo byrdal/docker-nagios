@@ -20,6 +20,7 @@ jobs:
   tag:
     runs-on: ubuntu-latest
     if: ${{ github.ref_type == 'tag' }}
+    needs: [build]
     steps:
       - name: Docker login
         env:
