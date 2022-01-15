@@ -4,6 +4,7 @@ NAGIOS_BASIC_AUTH=${NAGIOS_BASIC_AUTH:-enabled}
 NAGIOS_USER=${NAGIOS_USER:-nagiosadmin}
 NAGIOS_PASS=${NAGIOS_PASS:-nagiosadmin}
 NAGIOS_TIMEZONE=${NAGIOS_TIMEZONE:-UTC}
+NAGIOS_DATE_FORMAT=${NAGIOS_DATE_FORMAT:-iso8601}
 
 echo "fastcgi_param TZ ${NAGIOS_TIMEZONE};" > /etc/nginx/timezone-include.conf
 
@@ -27,6 +28,7 @@ chown nagios:nagios -R /usr/local/nagiosgraph
 chown nagios:nagios -R /home/nagios
 
 echo "use_timezone=${NAGIOS_TIMEZONE}" >> /usr/local/nagios/etc/nagios.cfg
+sed -i -e "/date_format=/ s/=.*/=${NAGIOS_DATE_FORMAT}/" /usr/local/nagios/etc/nagios.cfg
 
 /usr/local/nagios/bin/nagios /usr/local/nagios/etc/nagios.cfg &
 

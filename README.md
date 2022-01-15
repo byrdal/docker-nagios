@@ -37,3 +37,4 @@ The image comes with sample configuration, to customize the configuration volume
 - `NAGIOS_USER` Username for nagios web basic auth (default: nagiosadmin)
 - `NAGIOS_PASS` Password for nagios web basic auth (default: nagiosadmin)
 - `NAGIOS_TIMEZONE` Timezone for web (default: UTC)  
+- `NAGIOS_DATE_FORMAT` Date format (default: iso8601)
