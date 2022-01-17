@@ -22,6 +22,11 @@ jobs:
     if: ${{ github.ref_type == 'tag' }}
     needs: [build]
     steps:
+      - uses: actions/checkout@v2
+
+      - name: Build image
+        run: docker build -q -t byrdal/nagios:latest .
+
       - name: Docker login
         env:
           DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USER }}
