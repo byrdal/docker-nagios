@@ -1,21 +1,20 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
-ENV NAGIOS_VERSION=4.4.7
+ENV NAGIOS_VERSION=4.4.8
 ENV NAGIOS_PLUGINS_VERSION=2.3.3
 ENV NAGIOS_GRAPH_VERSION=1.5.2
 ENV CHECK_MYSQL_HEALTH_VERSION=2.2.2
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt update && \
-    apt install -y build-essential curl wget unzip iputils-ping apache2-utils libcgi-pm-perl librrds-perl libgd-gd2-perl libnagios-object-perl libdbi-perl libdbd-mysql-perl libssl-dev mailutils nginx fcgiwrap php-fpm openssh-client jq && \
-# Install Nagios Core (--disable-ssl is workaround for seg fault error in nagios 4.4.7)
+RUN apt-get update && \
+    apt-get install -y build-essential curl wget unzip iputils-ping apache2-utils libcgi-pm-perl librrds-perl libgd-gd2-perl libnagios-object-perl libdbi-perl libdbd-mysql-perl libssl-dev mailutils nginx fcgiwrap php-fpm openssh-client jq && \
+# Install Nagios Core
     adduser --system --group --force-badname nagios && \
     usermod -a -G nagios www-data && \
     wget https://github.com/NagiosEnterprises/nagioscore/archive/nagios-${NAGIOS_VERSION}.tar.gz && \
     tar xzf nagios-${NAGIOS_VERSION}.tar.gz && \
     cd nagioscore-nagios-${NAGIOS_VERSION} && \
     ./configure \
-        --disable-ssl \
         --with-nagios-user=nagios \
         --with-nagios-group=nagios \
         --with-command-group=nagios && \

@@ -2,7 +2,7 @@
 
 Nagios running in docker
 
-- Nagios Core 4.4.7
+- Nagios Core 4.4.8
 - Nagios Plugins 2.3.3
 - Nagiosgraph 1.5.2
 - Check Mysql Health 2.2.2
@@ -11,12 +11,6 @@ Nagios running in docker
 
 ```
 docker run --name nagios -p 80:80 byrdal/nagios:latest
-```
-
-Or use docker-compose
-
-```
-docker-compose up -d
 ```
 
 Access the web interface at http://localhost:80
@@ -30,6 +24,16 @@ credentials are `nagiosadmin` / `nagiosadmin`
 
 Nagios configuration lives in `/usr/local/nagios/etc` and objects are in `/usr/local/nagios/etc/objects`.
 The image comes with sample configuration, to customize the configuration volume mount your own configuration. 
+
+## Volumes
+
+Configuration objects: `/usr/local/nagios/etc/objects`
+
+Scripts: `/usr/local/nagios/scripts`
+
+Status files: `/usr/local/nagios/var`
+
+Nagiosgraph status: `/usr/local/nagiosgraph/var` 
 
 ## Environment variables
 

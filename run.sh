@@ -9,7 +9,7 @@ NAGIOS_DATE_FORMAT=${NAGIOS_DATE_FORMAT:-iso8601}
 echo "fastcgi_param TZ ${NAGIOS_TIMEZONE};" > /etc/nginx/timezone-include.conf
 
 /etc/init.d/postfix start
-/etc/init.d/php7.4-fpm start
+/etc/init.d/php8.1-fpm start
 /etc/init.d/fcgiwrap start
 /etc/init.d/nginx start
 
