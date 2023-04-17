@@ -1,6 +1,6 @@
 FROM ubuntu:22.04
 
-# renovate: datasource=github-tags depName=NagiosEnterprises/nagioscore
+# renovate: datasource=github-tags depName=NagiosEnterprises/nagioscore extractVersion=^nagios-(?<version>[0-9]*.[0-9]*.[0-9]*).*$
 ENV NAGIOS_VERSION=4.4.10
 ENV NAGIOS_PLUGINS_VERSION=2.3.3
 ENV NAGIOS_GRAPH_VERSION=1.5.2
