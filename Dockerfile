@@ -1,7 +1,7 @@
 FROM ubuntu:22.04
 
 # renovate: datasource=github-tags depName=NagiosEnterprises/nagioscore extractVersion=^nagios-(?<version>[0-9]*.[0-9]*.[0-9]*).*$
-ENV NAGIOS_VERSION=4.4.14
+ENV NAGIOS_VERSION=4.5.0
 ENV NAGIOS_PLUGINS_VERSION=2.3.3
 ENV NAGIOS_GRAPH_VERSION=1.5.2
 ENV CHECK_MYSQL_HEALTH_VERSION=2.2.2
@@ -12,9 +12,9 @@ RUN apt-get update && \
 # Install Nagios Core
     adduser --system --group --force-badname nagios && \
     usermod -a -G nagios www-data && \
-    wget https://github.com/NagiosEnterprises/nagioscore/archive/nagios-${NAGIOS_VERSION}.tar.gz && \
+    wget https://github.com/NagiosEnterprises/nagioscore/releases/download/nagios-${NAGIOS_VERSION}/nagios-${NAGIOS_VERSION}.tar.gz && \
     tar xzf nagios-${NAGIOS_VERSION}.tar.gz && \
-    cd nagioscore-nagios-${NAGIOS_VERSION} && \
+    cd nagios-${NAGIOS_VERSION} && \
     ./configure \
         --with-nagios-user=nagios \
         --with-nagios-group=nagios \
@@ -65,7 +65,7 @@ RUN apt-get update && \
     make clean && \
 # Cleanup
     cd / && \
-    rm -r nagios-${NAGIOS_VERSION}.tar.gz nagioscore-nagios-${NAGIOS_VERSION} nagios-plugins-${NAGIOS_PLUGINS_VERSION}.tar.gz nagios-plugins-${NAGIOS_PLUGINS_VERSION} nagiosgraph-${NAGIOS_GRAPH_VERSION}.tar.gz nagiosgraph-${NAGIOS_GRAPH_VERSION} check_mysql_health-${CHECK_MYSQL_HEALTH_VERSION}.tar.gz check_mysql_health-${CHECK_MYSQL_HEALTH_VERSION} && \
+    rm -r nagios-${NAGIOS_VERSION}.tar.gz nagios-${NAGIOS_VERSION} nagios-plugins-${NAGIOS_PLUGINS_VERSION}.tar.gz nagios-plugins-${NAGIOS_PLUGINS_VERSION} nagiosgraph-${NAGIOS_GRAPH_VERSION}.tar.gz nagiosgraph-${NAGIOS_GRAPH_VERSION} check_mysql_health-${CHECK_MYSQL_HEALTH_VERSION}.tar.gz check_mysql_health-${CHECK_MYSQL_HEALTH_VERSION} && \
     apt-get -y remove --purge build-essential && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
