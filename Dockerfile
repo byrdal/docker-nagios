@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 
 # renovate: datasource=github-tags depName=NagiosEnterprises/nagioscore extractVersion=^nagios-(?<version>[0-9]*.[0-9]*.[0-9]*).*$
 ENV NAGIOS_VERSION=4.5.1
