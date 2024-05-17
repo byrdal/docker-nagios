@@ -8,9 +8,9 @@ ENV CHECK_MYSQL_HEALTH_VERSION=2.2.2
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && \
-    apt-get install -y build-essential curl wget unzip iputils-ping apache2-utils libcgi-pm-perl librrds-perl libgd-gd2-perl libnagios-object-perl libdbi-perl libdbd-mysql-perl libssl-dev mailutils nginx fcgiwrap php-fpm openssh-client jq && \
+    apt-get install -y build-essential curl wget unzip iputils-ping apache2-utils libcgi-pm-perl librrds-perl libgd-gd2-perl libnagios-object-perl libdbi-perl libdbd-mysql-perl libssl-dev mailutils nginx fcgiwrap spawn-fcgi php-fpm openssh-client jq && \
 # Install Nagios Core
-    adduser --system --group --force-badname nagios && \
+    adduser --system --group --home /home/nagios --force-badname nagios && \
     usermod -a -G nagios www-data && \
     wget https://github.com/NagiosEnterprises/nagioscore/releases/download/nagios-${NAGIOS_VERSION}/nagios-${NAGIOS_VERSION}.tar.gz && \
     tar xzf nagios-${NAGIOS_VERSION}.tar.gz && \
