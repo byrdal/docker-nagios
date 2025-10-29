@@ -1,8 +1,11 @@
 FROM ubuntu:24.04
 
+ARG TARGETARCH
+
 # renovate: datasource=github-tags depName=NagiosEnterprises/nagioscore extractVersion=^nagios-(?<version>[0-9]*.[0-9]*.[0-9]*).*$
-ENV NAGIOS_VERSION=4.5.9
-ENV NAGIOS_PLUGINS_VERSION=2.3.3
+ENV NAGIOS_VERSION=4.5.10
+# renovate: datasource=github-tags depName=nagios-plugins/nagios-plugins extractVersion=^release-(?<version>[0-9]*.[0-9]*.[0-9]*).*$
+ENV NAGIOS_PLUGINS_VERSION=2.4.12
 ENV NAGIOS_GRAPH_VERSION=1.5.2
 ENV CHECK_MYSQL_HEALTH_VERSION=2.2.2
 ENV DEBIAN_FRONTEND=noninteractive
@@ -18,7 +21,8 @@ RUN apt-get update && \
     ./configure \
         --with-nagios-user=nagios \
         --with-nagios-group=nagios \
-        --with-command-group=nagios && \
+        --with-command-group=nagios \
+  $( if [ "${TARGETARCH}" = "arm64" ]; then echo "--with-ssl-lib=/usr/lib/aarch64-linux-gnu"; fi ) && \
     make all && \
     make install && \
     make install-config && \

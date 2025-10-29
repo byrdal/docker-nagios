@@ -2,8 +2,8 @@
 
 Nagios running in docker
 
-- Nagios Core 4.5.9
-- Nagios Plugins 2.3.3
+- Nagios Core 4.5.10
+- Nagios Plugins 2.4.12
 - Nagiosgraph 1.5.2
 - Check Mysql Health 2.2.2
 
@@ -42,3 +42,4 @@ Nagiosgraph status: `/usr/local/nagiosgraph/var`
 - `NAGIOS_PASS` Password for nagios web basic auth (default: nagiosadmin)
 - `NAGIOS_TIMEZONE` Timezone for web (default: UTC)  
 - `NAGIOS_DATE_FORMAT` Date format (default: iso8601)
+- `NAGIOS_THEME` Theme for web interface, possible values "dark" or "light" (default: dark)
