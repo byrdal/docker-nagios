@@ -10,7 +10,7 @@ jobs:
   tag:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Build image
         run: docker build -q -t byrdal/nagios:latest .
