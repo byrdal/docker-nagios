@@ -5,7 +5,7 @@ ARG TARGETARCH
 # renovate: datasource=github-tags depName=NagiosEnterprises/nagioscore extractVersion=^nagios-(?<version>[0-9]*.[0-9]*.[0-9]*).*$
 ENV NAGIOS_VERSION=4.5.11
 # renovate: datasource=github-tags depName=nagios-plugins/nagios-plugins extractVersion=^release-(?<version>[0-9]*.[0-9]*.[0-9]*).*$
-ENV NAGIOS_PLUGINS_VERSION=2.4.12
+ENV NAGIOS_PLUGINS_VERSION=2.5
 ENV NAGIOS_GRAPH_VERSION=1.5.2
 ENV CHECK_MYSQL_HEALTH_VERSION=2.2.2
 ENV DEBIAN_FRONTEND=noninteractive
