@@ -2,8 +2,8 @@
 
 Nagios running in docker
 
-- Nagios Core 4.5.11
-- Nagios Plugins 2.4.12
+- Nagios Core 4.5.12
+- Nagios Plugins 2.5
 - Nagiosgraph 1.5.2
 - Check Mysql Health 2.2.2
 
