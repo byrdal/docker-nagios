@@ -9,5 +9,6 @@
       "fileMatch": ["^Dockerfile$"],
       "matchStrings": ["datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?( extractVersion=(?<extractVersion>.*?))?\\sENV .*?_VERSION=(?<currentValue>.*)\\s"]
     }
-  ]
+  ],
+  "assignees": [ "byrdal" ]
 }
